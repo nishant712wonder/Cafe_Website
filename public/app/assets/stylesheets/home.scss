@@ -1,0 +1,407 @@
+// Place all the styles related to the main controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import "bourbon";
+@import url('https://fonts.googleapis.com/css?family=Dosis|Muli');
+
+$font: 'Muli', sans-serif;
+$red: #9F372A;
+$brown: #694E33;
+$light-brown: #948156;
+
+body {
+  padding: 0;
+  margin: 0;
+}
+
+nav {
+  font-family: $font;
+  position: fixed;
+  background: #fff;
+  width: 100%;
+  top: 0px;
+  left: 0px;
+  z-index: 100;
+  text-align: center;
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  box-shadow: 0px -20px 20px 20px rgba(0, 0, 0, 0.2);
+}
+
+nav ul li {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+
+  a {
+    letter-spacing: 0;
+    transition: all 100ms;
+  }
+
+// nav lines hover effect
+  a:active {
+    letter-spacing: 5px;
+  }
+
+  a:after,
+  a:before {
+    backface-visibility: hidden;
+    border: 1.1px solid rgba(#fff, 0);
+    bottom: 0px;
+    content: "";
+    display: block;
+    margin: 0 auto;
+    position: relative;
+    transition: all 100ms ease-in-out;
+    width: 0;
+  }
+}
+
+//makes nav item stay colored when associated section is active
+#navigation > li > a.current {
+    color: $red;
+}
+
+nav ul li a {
+  display: block;
+  color: #000;
+  text-decoration: none;
+  height: 46px;
+  padding: 20px 15px 0px 15px;
+}
+
+@media (hover: hover) {
+  nav ul li a:hover {
+    background: $red;
+    color: #fff;
+  }
+
+  #navigation > li:hover > a {
+    background: $red;
+    color: #fff;
+    letter-spacing: 5px;
+  }
+
+  nav ul li a:hover {
+    letter-spacing: 5px;
+    color: #fff;
+  }
+
+  nav ul li a:hover:after,
+  a:hover:before {
+    backface-visibility: hidden;
+    border-color: #fff;
+    transition: width 100ms ease-in-out;
+    width: 100%;
+  }
+
+  a:hover:before {
+    bottom: auto;
+    top: 0;
+    width: 100%;
+  }
+
+  .top:hover {
+    background: #fff;
+    border-color: $red;
+    color: $red;
+    -webkit-transition-property: all;
+    -moz-transition-property: all;
+    transition-property: all;
+    -webkit-transition-duration: .4s;
+    -moz-transition-duration: .4s;
+    transition-duration: .4s;
+    -webkit-transition-timing-function: ease-in-out;
+    transition-timing-function: ease-in-out;
+  }
+}
+
+#pages .section {
+  min-height: 100vh;
+  font-family: $font;
+}
+
+//back to top button
+.top {
+	z-index: 100;
+	position: fixed;
+	bottom: 5px;
+	right: 10px;
+	cursor: pointer;
+	font-size: 25px;
+  background: $red;
+  border-color: $red;
+  color: #fff;
+  padding: 0 15px;
+  letter-spacing: 0px;
+  border-radius: 0px;
+}
+
+.main-text {
+  width: 100%;
+  text-align: center;
+  font-family: $font;
+	position: absolute;
+	top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+	color: #fff;
+  z-index: 2;
+
+  a {
+    font-family: $font;
+    text-decoration: none;
+    color: #fff;
+    font-size: 14px;
+  }
+
+  button {
+    line-height: 0;
+  }
+
+  a button {
+    font-family: $font;
+    font-size: 16px;
+    color: #fff;
+    border-radius: 0px;
+    background-color: $red;
+    border-color: $red;
+    margin-bottom: 0;
+    font-weight: 0;
+    padding: 20px 47px;
+  }
+
+  a button:hover {
+    border: 1.5px solid #fff;
+  }
+}
+
+// main-text slide-in animation
+.animate-reveal {
+  font: bold 1.5em;
+  letter-spacing: 2px;
+  opacity: 0;
+  -webkit-animation: reveal 1s cubic-bezier(0, 1, 0.5, 1) 1 normal forwards;
+     -moz-animation: reveal 1s ease-in 1 normal forwards;
+       -o-animation: reveal 1s cubic-bezier(0, 1, 0.5, 1) 1 normal forwards;
+          animation: reveal 1s cubic-bezier(0, 1, 0.5, 1) 1 normal forwards;
+}
+
+.animate-first {
+  -webkit-animation-delay: 500ms;
+     -moz-animation-delay: 500ms;
+       -o-animation-delay: 500ms;
+          animation-delay: 500ms;
+}
+
+.animate-second {
+  -webkit-animation-delay: 1s;
+     -moz-animation-delay: 1s;
+       -o-animation-delay: 1s;
+          animation-delay: 1s;
+}
+
+.animate-third {
+  -webkit-animation-delay: 1.5s;
+     -moz-animation-delay: 1.5s;
+       -o-animation-delay: 1.5s;
+          animation-delay: 1.5s;
+}
+
+@-webkit-keyframes reveal {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(100%);
+       -moz-transform: translateX(100%);
+         -o-transform: translateX(100%);
+            transform: translateX(100%);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateX(0);
+       -moz-transform: translateX(0);
+         -o-transform: translateX(0);
+            transform: translateX(0);
+  }
+}
+
+@-moz-keyframes reveal {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(100%);
+       -moz-transform: translateX(100%);
+         -o-transform: translateX(100%);
+            transform: translateX(100%);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateX(0);
+       -moz-transform: translateX(0);
+         -o-transform: translateX(0);
+            transform: translateX(0);
+  }
+}
+
+@-o-keyframes reveal {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(100%);
+       -moz-transform: translateX(100%);
+         -o-transform: translateX(100%);
+            transform: translateX(100%);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateX(0);
+       -moz-transform: translateX(0);
+         -o-transform: translateX(0);
+            transform: translateX(0);
+  }
+}
+
+@keyframes reveal {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(100%);
+       -moz-transform: translateX(100%);
+         -o-transform: translateX(100%);
+            transform: translateX(100%);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateX(0);
+       -moz-transform: translateX(0);
+         -o-transform: translateX(0);
+            transform: translateX(0);
+  }
+}
+
+
+// slideshow
+// length of each slide in seconds
+$animation-delay: 6s;
+
+.slideshow {
+  list-style: none;
+  z-index: 1;
+  li {
+    span { 
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      color: transparent;
+      background-size: cover;
+      background-position: 50% 50%;
+      background-repeat: none;
+      background-attachment: fixed;
+      opacity: 0;
+      z-index: 0;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      // multiply slide duration by the total number of slides
+      @include animation(imageAnimation $animation-delay * 4 linear infinite 0s);
+    }
+  }
+}
+
+    .ss-overlay {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      background-color: $brown;
+      z-index: 1;
+      opacity: 0.3;
+      background-size: cover;
+      background-position: 50% 50%;
+      background-repeat: none;
+      background-attachment: fixed;
+    }
+
+// add and remove new slides here, maintaning the animation-delay format
+.slideshow li:nth-child(1) span { 
+  background-image: url(https://images.pexels.com/photos/6067/coffee-flower-reading-magazine.jpg?w=1260&h=750&auto=compress&cs=tinysrgb);
+}
+.slideshow li:nth-child(2) span { 
+  background-image: url(https://images.pexels.com/photos/414630/pexels-photo-414630.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb);
+  @include animation-delay($animation-delay);
+}
+.slideshow li:nth-child(3) span { 
+  background-image: url(https://images.unsplash.com/photo-1492158244976-29b84ba93025?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=7a3c363911e0f724249dda7d634365f1&auto=format&fit=crop&w=967&q=80);
+  @include animation-delay($animation-delay * 2);
+}
+.slideshow li:nth-child(4) span { 
+  background-image: url(https://images.pexels.com/photos/302894/pexels-photo-302894.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb);
+  @include animation-delay($animation-delay * 3);
+}
+
+// animation for the slideshow images
+@include keyframes(imageAnimation) {
+  0% {
+    opacity: 0;
+    @include animation-timing-function(ease);
+  }
+  12.5% {
+    opacity: 1;
+    @include animation-timing-function(ease);
+  }
+  25% {
+    opacity: 1;
+  }
+  37.5% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+// modernizr is used to show the first slide as a fallback for when css animations are not supported
+.no-cssanimations .slideshow li span {
+  opacity: 1;
+}
+
+footer {
+  margin-top: 75px;
+  text-align: center;
+  background-color: $red;
+  color: #fff;
+
+  .footer-text {
+    padding: 20px 0 5px;
+  }
+
+  a {
+    text-decoration: none;
+  }
+}
+
+@media (max-width: 450px) {
+  #navigation li a {
+      display: block;
+      color: #694E33;
+      text-decoration: none;
+      height: 33px;
+      padding: 8px 8px 0px 8px;
+      font-size: 11px;
+  }
+}
+
+@media (max-width: 775px) {
+  .slideshow li:nth-child(1) span,
+  .slideshow li:nth-child(2) span,
+  .slideshow li:nth-child(3) span,
+  .slideshow li:nth-child(4) span,
+  .slideshow,
+  .ss-overlay {
+    background-attachment: scroll;
+  }
+}

@@ -1,0 +1,105 @@
+<div id="testimonials" class="section">
+	<div class="testimonials-slideshow">
+		<div class="slideshow-slides">
+			<div class="slideshow-slide slideshow-slide--is-active">
+				<img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=634&q=80" alt="" /><br>
+        <strong>Maria</strong>
+        <i class="fa fa-star" aria-hidden="true"></i>
+        <i class="fa fa-star" aria-hidden="true"></i>
+        <i class="fa fa-star" aria-hidden="true"></i>
+        <i class="fa fa-star" aria-hidden="true"></i>
+        <i class="fa fa-star" aria-hidden="true"></i>
+        <span>I love this place! Super cozy, comfortable atmosphere. Perfect place to meet friends for coffee. My go to order is a Toasted Coconut Cold Brew and Blueberry Scone. The staff is very friendly and remembers me by name! This is always my first coffee shop to recommend to people visiting the area.</span>
+			</div>
+			<div class="slideshow-slide">
+				<img src="https://images.unsplash.com/photo-1493666438817-866a91353ca9?auto=format&fit=crop&w=1049&q=80" alt="" /><br>
+        <strong>Stephanie</strong>
+        <i class="fa fa-star" aria-hidden="true"></i>
+        <i class="fa fa-star" aria-hidden="true"></i>
+        <i class="fa fa-star" aria-hidden="true"></i>
+        <i class="fa fa-star" aria-hidden="true"></i>
+        <i class="fa fa-star" aria-hidden="true"></i>
+        <span>Very impressive coffee shop with awesome design and delicious drinks. I stop here every morning before work. They are very fast and efficient. The place feels very hip and calm. Always a great start to my day!</span>
+			</div>
+			<div class="slideshow-slide">
+				<img src="https://images.unsplash.com/photo-1505503693641-1926193e8d57?auto=format&fit=crop&w=634&q=80" alt="" /><br>
+        <strong>Dan</strong>
+        <i class="fa fa-star" aria-hidden="true"></i>
+        <i class="fa fa-star" aria-hidden="true"></i>
+        <i class="fa fa-star" aria-hidden="true"></i>
+        <i class="fa fa-star" aria-hidden="true"></i>
+        <i class="fa fa-star" aria-hidden="true"></i>
+        <span>Perfect place to hang for hours and get some work done. Location and ambiance is amazing. Coffee and pastries are always fresh. The staff is super upbeat and gives me an overall awesome vibe as soon as I walk in the door.</span>
+			</div>
+			<div class="slideshow-slide slideshow-slide--is-last">
+				<img src="https://images.unsplash.com/photo-1507875165751-e330e59d8675?auto=format&fit=crop&w=1050&q=80" alt="" /><br>
+        <strong>Heather</strong>
+        <i class="fa fa-star" aria-hidden="true"></i>
+        <i class="fa fa-star" aria-hidden="true"></i>
+        <i class="fa fa-star" aria-hidden="true"></i>
+        <i class="fa fa-star" aria-hidden="true"></i>
+        <i class="fa fa-star" aria-hidden="true"></i>
+        <span>My absolute favortie place in town! Everyone I know raves about this coffee spot. The pastries are seriously delicious and the drinks are to die for. I'm absolutely addicted to the London Fog Tea Latte. The decor is super cool and the staff always makes me feel right at home.</span>
+			</div>
+		</div>
+		<div class="slideshow-nav">
+			<a href="" class="slideshow-nav-link slideshow-nav-link--is-previous"><i class="fa fa-angle-left"></i></a>
+			<a href="" class="slideshow-nav-link slideshow-nav-link--is-next"><i class="fa fa-angle-right"></i></a>
+		</div>
+	</div><!--  end of .testimonials-slidwshow -->
+</div><!--  end of #testimonials -->
+
+<script>
+// testimonials slideshow
+$(document).ready(function(){
+  var $prev = $('.slideshow-nav-link--is-previous');
+  var $next = $('.slideshow-nav-link--is-next');
+  var mode = "auto";
+  $prev.on({
+    click: function(e){
+      e.preventDefault();
+      mode = "manual";
+      showPreviousImage();
+    }
+  });
+  $next.on({
+    click: function(e){
+      e.preventDefault();
+      mode = "manual";
+      showNextImage();
+      
+    }
+  });
+  
+  setInterval(function(){
+    if(mode==="auto"){
+      showNextImage();
+    }
+  },5000);
+  
+  function showNextImage(){
+      var $actEl = $('.slideshow-slide--is-active');
+      var $nextEl = $actEl.next('.slideshow-slide');
+      if($nextEl.length){
+        $actEl.removeClass('slideshow-slide--is-active');
+        $nextEl.addClass('slideshow-slide--is-active');
+      }else{
+        $actEl.removeClass('slideshow-slide--is-active');
+        $('.slideshow-slide:first-child').addClass('slideshow-slide--is-active');
+      }
+  }
+  
+  function showPreviousImage(){
+      var $actEl = $('.slideshow-slide--is-active');
+      var $prevEl = $actEl.prev('.slideshow-slide');
+      if($prevEl.length){
+        $actEl.removeClass('slideshow-slide--is-active');
+        $prevEl.addClass('slideshow-slide--is-active');
+      }else{
+      	console.log("no more");
+        $actEl.removeClass('slideshow-slide--is-active');
+        $('div.slideshow-slide.slideshow-slide--is-last').addClass('slideshow-slide--is-active');
+      }
+  }
+});
+</script>

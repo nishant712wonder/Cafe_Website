@@ -1,0 +1,108 @@
+$font: 'Muli', sans-serif;
+$red: #9F372A;
+$brown: #694E33;
+
+#map {
+	height: 300px;
+	width: 100%;
+}
+
+.contact-info {
+	li {
+		margin-bottom: 11px;
+
+		i {
+			margin-right: 3%;
+		}
+	}
+
+	.city-state {
+		margin-left: 7.5%;
+	}
+}
+
+.contact-info,
+.hours {
+	margin-bottom: 5%;
+
+	ul {
+		list-style-type: none;
+	}
+}
+
+.social-icons {
+	// margin-left: 10%;
+
+	i {
+		font-size: 20px;
+		padding: 2%;
+		color: $red;
+	}
+
+	i:hover {
+        background-color: $red;
+        color: #fff;
+        -webkit-transition-property: all;
+        -moz-transition-property: all;
+        transition-property: all;
+        -webkit-transition-duration: .4s;
+        -moz-transition-duration: .4s;
+        transition-duration: .4s;
+        -webkit-transition-timing-function: ease-in-out;
+        transition-timing-function: ease-in-out;
+    }
+}
+
+.contact-info a {
+	text-decoration: none;
+	color: $red;
+	margin-top: 5%;
+}
+
+#contact {
+	padding-top: 50px;
+
+	.row {
+		width: 70%;
+		margin: 0 auto;
+	}
+}
+
+.day {
+	font-size: 17px;
+	display: table-cell;
+    width: 1%;
+    white-space: nowrap;
+    padding-right: 5px;
+    font-weight: bold;
+}
+
+.hours-line {
+	height: 3px;
+    border-bottom: 1px solid rgba(0,0,0,.1);
+    display: table-cell;
+    width: 98%;
+    z-index: 1;
+    position: relative;
+    bottom: 2px;
+}
+
+.time {
+	display: table-cell;
+    width: 1%;
+    padding-left: 7px;
+    white-space: nowrap;
+}
+
+.hours {
+	li {
+		line-height: 12px;
+	}
+}
+
+@media (max-width: 890px) {
+	#contact .row {
+	    width: 100%;
+	    margin: 0px;
+	}
+}

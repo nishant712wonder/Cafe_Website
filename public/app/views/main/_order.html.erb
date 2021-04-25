@@ -1,0 +1,145 @@
+<div id="order" class="section">
+
+<h1>Place an Order</h1>
+
+<form id="contact-form" action="//formspree.io/embarnese4@hotmail.com" method="post">
+	<input type="text" name="Name" placeholder="Name*" required>
+        <br>
+	<input type="email" name="Email" placeholder="Email*" required>
+        <br>
+
+    <select name="time">
+      <option  disabled selected>Select Your Time</option>
+      <option value="now">now</option>
+      <option value="30-minutes">30 minutes</option>
+      <option value="one-hour">1 Hour</option>
+      <option value="one-half-hour">1.5 Hours</option>
+      <option value="two-hours">2 Hours</option>
+    </select>
+
+    <br>
+
+<div class="container">
+    <div class="row">
+        <div class="one-third column">
+
+            <h6>Coffee</h6>
+
+            <input type="checkbox" class="filled-in" id="featured-dark-roast" name="featured-dark-roast" />
+            <label for="featured-dark-roast">Featured Dark Roast</label>
+                <br>
+
+            <input type="checkbox" class="filled-in" id="blonde-roast" name="blonde-roast" />
+            <label for="blonde-roast">Blonde Roast</label>
+                <br>
+
+            <input type="checkbox" class="filled-in" id="iced-coffee" name="iced-coffee" />
+            <label for="iced-coffee">Iced Coffee</label>
+                <br>
+
+            <input type="checkbox" class="filled-in" id="vanilla-sweet-cream" name="vanilla-sweet-cream" />
+            <label for="vanilla-sweet-cream">Vanilla Sweet Cream Cold Brew</label>
+                <br>
+
+            <input type="checkbox" class="filled-in" id="toasted-coconut" name="toasted-coconut" />
+            <label for="toasted-coconut">Toasted Coconut Cold Brew</label>
+                <br>
+
+            <input type="checkbox" class="filled-in" id="decaf-roast" name="decaf-roast" />
+            <label for="decaf-roast">Decaf Roast</label>
+                <br>
+
+        </div>
+
+        <div class="one-third column">
+
+            <h6>Tea</h6>
+
+            <input type="checkbox" class="filled-in" id="earl-grey" name="earl-grey" />
+            <label for="earl-grey">Earl Grey Brewed Tea</label>
+                <br>
+
+            <input type="checkbox" class="filled-in" id="green-tea" name="green-tea" />
+            <label for="green-tea">Green Tea Latte</label>
+                <br>
+
+            <input type="checkbox" class="filled-in" id="chai" name="chai" />
+            <label for="chai">Chai Latte</label>
+                <br>
+
+            <input type="checkbox" class="filled-in" id="jade-citrus" name="jade-citrus" />
+            <label for="jade-citrus">Jade Citrus Mint Green Tea</label>
+                <br>
+
+            <input type="checkbox" class="filled-in" id="london-fog" name="london-fog" />
+            <label for="london-fog">London Fog Tea Latte</label>
+                <br>
+
+            <input type="checkbox" class="filled-in" id="pineapple-black" name="pineapple-black" />
+            <label for="pineapple-black">Pineapple Black Tea Infusion</label>
+                <br>
+
+        </div>
+
+        <div class="one-third column">
+
+            <h6>Pastries</h6>
+
+            <input type="checkbox" class="filled-in" id="blueberry-scone" name="blueberry-scone" />
+            <label for="blueberry-scone">Blueberry Scone</label>
+                <br>
+
+            <input type="checkbox" class="filled-in" id="banana-nut" name="banana-nut" />
+            <label for="banana-nut">Banana Nut Bread</label>
+                <br>
+
+            <input type="checkbox" class="filled-in" id="chocolate-croissant" name="chocolate-croissant" />
+            <label for="chocolate-croissant">Chocolate Croissant</label>
+                <br>
+
+            <input type="checkbox" class="filled-in" id="cinnamon-raisin" name="cinnamon-raisin" />
+            <label for="cinnamon-raisin">Cinnamon Raisin Bagel</label>
+                <br>
+
+            <input type="checkbox" class="filled-in" id="coffee-cake" name="coffee-cake" />
+            <label for="coffee-cake">Classic Coffee Cake</label>
+                <br>
+
+            <input type="checkbox" class="filled-in" id="chocolate-loaf" name="chocolate-loaf" />
+            <label for="chocolate-loaf">Double Chocolate Loaf Cake</label>
+                <br>
+
+        </div>
+    </div><!--  end of row -->
+</div><!--  end of container -->
+
+	<textarea name="Message" cols="30" rows="6" placeholder="Special Instructions/ Requests"></textarea>
+        <br>
+	<input class="submit" type="submit" value="Place Order">
+</form>
+
+<script>
+// contact form submission without page refresh
+var $contactForm = $('#contact-form');
+$contactForm.submit(function(e) {
+    e.preventDefault();
+    $.ajax({
+        url: '//formspree.io/embarnese4@hotmail.com',
+        method: 'POST',
+        data: $(this).serialize(),
+        dataType: 'json',
+        beforeSend: function() {
+            $contactForm.append('<div class="alert alert--loading">Placing order…</div>');
+        },
+        success: function(data) {
+            $contactForm.find('.alert--loading').hide();
+            $contactForm.append('<div class="alert alert--success">Thank you for your order. See you soon!</div>');
+        },
+        error: function(err) {
+            $contactForm.find('.alert--loading').hide();
+            $contactForm.append('<div class="alert alert--error">Oops, there was an error. Please try again!</div>');
+        }
+    });
+}); 
+</script>
+</div><!--  end of #order -->

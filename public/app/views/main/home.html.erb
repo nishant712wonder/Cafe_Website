@@ -1,0 +1,128 @@
+<nav>
+	<ul id="navigation">
+		<li><a href="#about">About</a></li>
+		<li><a href="#menu">Menu</a></li>
+		<li><a href="#testimonials">Testimonials</a></li>
+		<li><a href="#order">Order</a></li>
+		<li><a href="#contact">Contact</a></li>
+	</ul>
+</nav>
+
+<div id="pages">
+	<div id="main" class="section">
+	<div class="ss-overlay"></div>
+		<ul class="slideshow">
+		  <li>
+		    <span></span>
+		  </li>
+		  <li>
+		    <span></span>        
+		  </li>
+		  <li>
+		    <span></span>
+		  </li>
+		  <li>
+		    <span></span>
+		  </li>
+		</ul>
+		<div class="main-text">
+			<h1 class="animate-reveal animate-first">The Friendly Bean Cafe</h1>
+			<h3 class="animate-reveal animate-second">Serving world class coffee, tea, and pastries</h3>
+			<a href="#menu"><button class="animate-reveal animate-third">Menu</button></a>
+		</div>
+	</div><!--  end of #main -->
+	<%= render "about" %>
+	<%= render "menu" %>
+	<%= render "testimonials" %>
+	<%= render "order" %>
+	<%= render "contact" %>
+</div><!--  end of #pages -->
+
+<button class="top"><i class="fa fa-angle-up"></i></button>
+
+<footer>
+	<div class="footer-text">The Friendly Bean Cafe
+        <p>Website created by <a href="http://www.elisebarnes.org/" target="_blank">Elise Barnes</a></p>
+    </div>
+</footer>
+
+<script>
+// smooth scrolling nav bar
+$(document).ready(function() {
+  $('a[href^="#"]').click(function() {
+      var hash = $(this).attr('href');
+        $('html, body').animate({
+          scrollTop: $(hash).offset().top - 75
+        }, 1000);
+        return false;
+    });
+});
+
+
+// makes nav item stay colored when associated section is active
+$(window).scroll(function() {
+
+    var windowTop = Math.max($('body').scrollTop(), $('html').scrollTop());
+    // var scrollBottom = $(window).scrollTop() + $(window).height();
+
+    $('.section').each(function (index) {
+        if (windowTop > ($(this).position().top))
+        {
+            $('#navigation a.current').removeClass('current');
+            $('#navigation a:eq(' + index + ')').addClass('current');
+        }
+    });
+
+}).scroll();
+
+
+// $(window).scroll(function() {
+
+// 	// $('.section').each(function (index) {
+// 		console.log($(this));
+
+//     var top_of_element = $(this).offset().top;
+//     var bottom_of_element = $(this).offset().top + $(this).outerHeight();
+//     var bottom_of_screen = $(window).scrollTop() + window.innerHeight;
+//     var top_of_screen = $(window).scrollTop();
+
+//     if((bottom_of_screen > top_of_element) && (top_of_screen < bottom_of_element)){
+//         // The element is visible, do something
+//         $('#navigation a.current').removeClass('current');
+//         // $('#navigation a:eq(' + index + ')').addClass('current');
+//     }
+
+
+//     // });
+
+// });
+
+
+
+// back to top button
+$(document).ready(function() {
+    $(function(){
+        $.fn.scrollToTop=function(){
+            $(this).hide().removeAttr("href");
+            if($(window).scrollTop()!="0"){
+                $(this).fadeIn("slow")
+            }
+            var scrollDiv=$(this);
+            $(window).scroll(function(){
+                if($(window).scrollTop()=="0"){
+                    $(scrollDiv).fadeOut("slow")
+                }else{
+                    $(scrollDiv).fadeIn("slow")
+                }
+            });
+            $(this).click(function(){
+                $("html, body").animate({scrollTop:0},"slow")
+            }
+            )}
+        });
+            
+    $(function(){
+        $(".top").scrollToTop();
+    });
+});
+</script>
